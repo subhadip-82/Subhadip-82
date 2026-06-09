@@ -4,6 +4,7 @@ import styles from './TypeWriter.module.css';
 
 const ROLES = [
   'BI Developer',
+  'Data Analyst',
   'ETL Automation Engineer',
   'Cloud Analytics Specialist',
   'Data Intelligence Lead',
