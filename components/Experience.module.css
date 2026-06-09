@@ -1,0 +1,129 @@
+.section { background: var(--bg); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 3rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  border-color: var(--cyan-border);
+  box-shadow: 0 0 40px rgba(34,211,238,0.06);
+}
+
+.topBar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--cyan), var(--green));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.role {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+}
+.company {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-top: 0.3rem;
+}
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  text-align: right;
+}
+.location {
+  font-size: 0.78rem;
+  color: var(--white-muted);
+  margin-top: 0.25rem;
+  text-align: right;
+}
+
+/* Impact chips */
+.impacts {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+.impactChip {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid;
+  min-width: 100px;
+  text-align: center;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+.impactChip:hover { transform: translateY(-2px); }
+.cyan   { border-color: var(--cyan-border);   background: var(--cyan-dim);   }
+.green  { border-color: var(--green-border);  background: var(--green-dim);  }
+.amber  { border-color: var(--amber-border);  background: var(--amber-dim);  }
+.purple { border-color: var(--purple-border); background: var(--purple-dim); }
+
+.impactVal {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.cyan   .impactVal { color: var(--cyan);   }
+.green  .impactVal { color: var(--green);  }
+.amber  .impactVal { color: var(--amber);  }
+.purple .impactVal { color: var(--purple); }
+
+.impactLabel {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  margin-top: 0.25rem;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 1.8rem;
+}
+
+/* Bullets */
+.bullets { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  font-size: 0.92rem;
+  color: var(--white-dim);
+  line-height: 1.75;
+}
+.bulletIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .card { padding: 1.8rem; }
+  .header { flex-direction: column; }
+  .period, .location { text-align: left; }
+  .impactChip { min-width: calc(50% - 0.5rem); }
+}

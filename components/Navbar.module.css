@@ -1,0 +1,180 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 5rem;
+  background: rgba(5, 8, 15, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s, background 0.3s;
+}
+.scrolled {
+  padding: 0.7rem 5rem;
+  background: rgba(5, 8, 15, 0.93);
+  border-bottom-color: var(--cyan-border);
+}
+
+/* Logo */
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.logoBracket { color: var(--cyan); }
+
+/* Links */
+.links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--cyan);
+  transition: width 0.3s;
+}
+.link:hover            { color: var(--white); }
+.link:hover::after     { width: 100%; }
+.linkActive            { color: var(--cyan) !important; }
+.linkActive::after     { width: 100% !important; }
+
+/* Nav CTA */
+.navCta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--cyan-border);
+  padding: 0.45rem 1rem;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  border-radius: 2px;
+}
+.navCta:hover {
+  background: var(--cyan-dim);
+  box-shadow: 0 0 16px rgba(34,211,238,0.2);
+}
+
+/* Hamburger */
+.ham {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.ham span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--cyan);
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+.hamOpen span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamOpen span:nth-child(2) { opacity: 0; }
+.hamOpen span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Download CV button */
+.downloadBtn {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green-border);
+  background: var(--green-dim);
+  padding: 0.45rem 1rem;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.downloadBtn:hover {
+  background: rgba(74,222,128,0.18);
+  box-shadow: 0 0 18px rgba(74,222,128,0.25);
+  transform: translateY(-1px);
+}
+
+/* Mobile download link */
+.mobileDownload {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green-border);
+  background: var(--green-dim);
+  padding: 0.7rem 1.8rem;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.mobileDownload:hover { background: rgba(74,222,128,0.2); }
+
+
+.mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 15, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobileOpen { display: flex; }
+.mobileClose {
+  position: absolute;
+  top: 1.5rem; right: 2rem;
+  font-size: 1.6rem;
+  color: var(--cyan);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobileLink:hover { color: var(--cyan); }
+
+@media (max-width: 1024px) {
+  .nav, .scrolled { padding-left: 3rem; padding-right: 3rem; }
+}
+@media (max-width: 900px) {
+  .nav, .scrolled { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .links, .navCta, .downloadBtn { display: none; }
+  .ham { display: flex; }
+}

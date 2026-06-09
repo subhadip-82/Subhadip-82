@@ -1,0 +1,144 @@
+@keyframes onlinePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+
+.section { background: var(--bg-1); }
+
+.grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ── Photo card ── */
+.photoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.photoCard {
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.photoCard:hover {
+  border-color: var(--cyan-border);
+  box-shadow: 0 0 30px rgba(34,211,238,0.08);
+}
+
+.photoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.photoGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14,21,38,0.8) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.photoFooter {
+  padding: 0.9rem 1.1rem;
+  border-top: 1px solid var(--border);
+}
+.photoName {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.photoBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-top: 0.3rem;
+}
+.onlineDot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  animation: onlinePulse 2s ease-in-out infinite;
+}
+
+/* ── Stack ── */
+.stackWrap {}
+.stackLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--white-muted);
+  margin-bottom: 0.7rem;
+}
+.stackTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+/* ── Right column ── */
+.right { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.bioBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.bioBlock p {
+  font-size: 0.97rem;
+  color: var(--white-dim);
+  line-height: 1.9;
+}
+.bioBlock strong { color: var(--white); font-weight: 600; }
+
+/* ── Meta table ── */
+.metaTable {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+}
+.metaRow {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  padding: 0.7rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.metaRow:last-child { border-bottom: none; }
+.metaRow:hover { background: var(--card-2); }
+
+.metaKey {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
+  padding-top: 0.1rem;
+}
+.metaVal {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 2rem; }
+  .photoCard { max-width: 200px; }
+  .photoWrap { aspect-ratio: 1 / 1; }
+}

@@ -1,0 +1,32 @@
+.footer {
+  padding: 1.8rem 4rem;
+  border-top: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: var(--navy);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.copy {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--white-dim);
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 1.4rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+}

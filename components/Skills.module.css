@@ -1,0 +1,81 @@
+.section { background: var(--bg); }
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.group {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1.8rem 2rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.group:hover {
+  border-color: var(--cyan-border);
+  box-shadow: 0 0 24px rgba(34,211,238,0.05);
+}
+
+.groupHead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.groupIcon { font-size: 1.2rem; }
+.groupTitle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.title_cyan   { color: var(--cyan);   }
+.title_green  { color: var(--green);  }
+.title_purple { color: var(--purple); }
+.title_amber  { color: var(--amber);  }
+
+.skillList { display: flex; flex-direction: column; gap: 1rem; }
+
+.skillItem {}
+.skillTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+.skillName {
+  font-size: 0.84rem;
+  color: var(--white-dim);
+}
+.skillPct {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+.pct_cyan   { color: var(--cyan);   }
+.pct_green  { color: var(--green);  }
+.pct_purple { color: var(--purple); }
+.pct_amber  { color: var(--amber);  }
+
+.barBg {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+}
+.barFill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0;
+  border-radius: 2px;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bar_cyan   { background: linear-gradient(to right, var(--cyan), var(--cyan-light)); }
+.bar_green  { background: linear-gradient(to right, var(--green), #86efac); }
+.bar_purple { background: linear-gradient(to right, var(--purple), #c4b5fd); }
+.bar_amber  { background: linear-gradient(to right, var(--amber), #fde68a); }

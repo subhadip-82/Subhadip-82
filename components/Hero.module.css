@@ -1,0 +1,258 @@
+/* ── Keyframes (locally scoped) ── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes scrollDrop {
+  0%   { transform: translateY(0); opacity: 1; }
+  80%  { transform: translateY(18px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 9rem 5rem 5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ── Background elements ── */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34,211,238,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+}
+
+.gradientOrb1 {
+  position: absolute;
+  top: -10%; left: -5%;
+  width: 700px; height: 700px;
+  background: radial-gradient(ellipse, rgba(34,211,238,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.gradientOrb2 {
+  position: absolute;
+  bottom: -20%; right: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(ellipse, rgba(74,222,128,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Content ── */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid var(--green-border);
+  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+  margin-bottom: 2rem;
+  border-radius: 100px;
+}
+.badgeDot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── Name ── */
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 1.2rem;
+}
+.nameGrad {
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-light) 50%, var(--green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Role row ── */
+.roleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  margin-bottom: 1.8rem;
+  min-height: 1.8rem;
+}
+.rolePrefix {
+  color: var(--cyan);
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* ── Summary ── */
+.summary {
+  font-size: 1.05rem;
+  color: var(--white-dim);
+  max-width: 580px;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+.summary strong { color: var(--white); font-weight: 600; }
+
+/* ── Stat chips ── */
+.stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.8rem;
+}
+
+.statChip {
+  padding: 0.9rem 1.3rem;
+  border: 1px solid;
+  background: var(--card);
+  min-width: 130px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 4px;
+}
+.statChip:hover {
+  transform: translateY(-3px);
+}
+
+/* Color variants */
+.color_cyan   { border-color: var(--cyan-border);   background: var(--cyan-dim);   }
+.color_green  { border-color: var(--green-border);  background: var(--green-dim);  }
+.color_amber  { border-color: var(--amber-border);  background: var(--amber-dim);  }
+.color_purple { border-color: var(--purple-border); background: var(--purple-dim); }
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.color_cyan   .statNum { color: var(--cyan);   }
+.color_green  .statNum { color: var(--green);  }
+.color_amber  .statNum { color: var(--amber);  }
+.color_purple .statNum { color: var(--purple); }
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+}
+
+/* ── CTAs ── */
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.learnMore {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 0.8rem 0.5rem;
+}
+.learnMore:hover { color: var(--cyan); }
+
+.downloadCv {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green-border);
+  background: var(--green-dim);
+  padding: 0.8rem 1.8rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.downloadCv:hover {
+  background: rgba(74, 222, 128, 0.18);
+  box-shadow: 0 4px 20px rgba(74, 222, 128, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ── Scroll indicator ── */
+.scrollLine {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 1px;
+  height: 64px;
+  background: linear-gradient(to bottom, var(--cyan-border), transparent);
+  z-index: 2;
+}
+.scrollDot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  margin-top: -2px;
+  margin-left: -2px;
+  animation: scrollDrop 1.8s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+/* ── Animate-in classes (JS-toggled after mount) ── */
+.in0 { animation: fadeSlideUp 0.65s 0.0s both; }
+.in1 { animation: fadeSlideUp 0.65s 0.15s both; }
+.in2 { animation: fadeSlideUp 0.65s 0.3s both; }
+.in3 { animation: fadeSlideUp 0.65s 0.45s both; }
+.in4 { animation: fadeSlideUp 0.65s 0.6s both; }
+.in5 { animation: fadeSlideUp 0.65s 0.75s both; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .stats { gap: 0.75rem; }
+  .statChip { min-width: 110px; padding: 0.75rem 1rem; }
+  .statNum  { font-size: 1.5rem; }
+}
+@media (max-width: 560px) {
+  .ctas { flex-direction: column; align-items: flex-start; }
+  .stats { gap: 0.6rem; }
+  .statChip { min-width: calc(50% - 0.3rem); }
+}
