@@ -1,5 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import TiltCard from './TiltCard';
+import AgentWorkflow3D from './AgentWorkflow3D';
 import styles from './Projects.module.css';
 
 const PROJECTS = [
@@ -7,72 +9,72 @@ const PROJECTS = [
     num: '01',
     color: 'cyan',
     featured: true,
-    name: 'DORM – Centralized Operations Dashboard',
-    role: 'Senior Data Analyst',
+    name: 'LangGraph Agentic Patch Remediation & MCP Framework',
+    role: 'AI Solutions Engineer',
     impact: [
-      { val: '100+', label: 'Customers Served' },
-      { val: '200+', label: 'In Pipeline'      },
-      { val: '4',    label: 'ITSM Streams'     },
+      { val: '20K+', label: 'Target Endpoints' },
+      { val: 'LangGraph', label: 'State Checkpoints' },
+      { val: 'MCP', label: 'Protocol Tools' },
     ],
-    desc: 'Consolidated Incidents, Problems, Service Requests, and Changes into a unified Power BI operational platform. Replaced fragmented email-based reporting across all business units — now the single source of truth for operational health.',
-    tags: ['Power BI', 'DAX', 'SQL', 'ServiceNow', 'SharePoint', 'Power Automate'],
-    icon: '📊',
+    desc: 'Production agent-based infrastructure patch remediation workflow built in LangGraph. Automatically evaluates vulnerability risk, verifies patch compatibility using custom MCP tools, enforces mandatory human-in-the-loop approvals for high-risk changes, and persists node-by-node execution state in PostgreSQL.',
+    tags: ['LangGraph', 'MCP Protocol', 'Python (Asyncio)', 'PostgreSQL', 'Claude Code', 'REST APIs'],
+    icon: '🤖',
   },
   {
     num: '02',
     color: 'green',
     featured: false,
-    name: 'Intelligent Operations Dashboard Suite',
-    role: 'Senior Data Analyst',
+    name: 'DORM – Centralized Operations Dashboard Platform',
+    role: 'Senior Analyst — BI & Enterprise Automation',
     impact: [
-      { val: '35%',  label: 'Faster Reporting' },
-      { val: 'SLA',  label: 'Monitoring'        },
+      { val: '100+', label: 'Enterprise Accounts' },
+      { val: '40%', label: 'Reporting Effort Cut' },
     ],
-    desc: 'Enterprise-wide suite covering Incident, Service, Risk, Security, Application, and Infrastructure. KPI dashboards for SLA compliance, MTTR, and CPU/Memory utilization.',
-    tags: ['Power BI', 'Azure Data Lake', 'DAX', 'ServiceNow', 'Power Automate'],
-    icon: '🏗️',
+    desc: 'Consolidated Incidents, Problems, Service Requests, and Changes into a unified Power BI operational platform. Replaced fragmented email reporting — serving as the single source of truth for 100+ enterprise customer deployments.',
+    tags: ['Power BI', 'DAX', 'SQL', 'ServiceNow', 'SharePoint', 'Power Automate'],
+    icon: '📊',
   },
   {
     num: '03',
     color: 'purple',
     featured: false,
-    name: 'Automated Security Compliance Monitoring',
-    role: 'Automation Engineer / BI Dev',
+    name: 'Endpoint Security & Unauthorized Software Remediation',
+    role: 'Automation Engineer',
     impact: [
-      { val: '~90',   label: 'FTEs Saved'   },
-      { val: '2000+', label: 'Systems'       },
+      { val: '135', label: 'FTE-Hours Saved' },
+      { val: '20K+', label: 'Endpoints Managed' },
     ],
-    desc: 'Secure PowerShell framework automating daily config and access-control validation across 2000+ enterprise systems. Centralized Power BI compliance monitoring dashboard.',
-    tags: ['PowerShell', 'Windows Server', 'Power BI', 'Task Scheduler'],
+    desc: 'Automated PowerShell framework monitoring enterprise endpoints via centralized jump hosts. Auto-collected software inventory, detected unauthorized installations, and executed remote uninstall operations across 20,000+ endpoints.',
+    tags: ['PowerShell', 'Windows Server', 'Task Scheduler', 'Endpoint Security'],
     icon: '🔒',
   },
   {
     num: '04',
     color: 'amber',
     featured: false,
-    name: 'Business Transactions & Refund Governance',
-    role: 'Automation Engineer / BI Dev',
+    name: 'CMDB Asset & Infrastructure Telemetry Ingestion',
+    role: 'Data & BI Engineer',
     impact: [
-      { val: '80+', label: 'Databases'       },
-      { val: '90+', label: 'Global Branches' },
+      { val: '35%', label: 'Ingestion Effort Saved' },
+      { val: 'Azure/Oracle', label: 'Data Pipelines' },
     ],
-    desc: 'Refund eligibility dashboard with real-time exception detection. Integrated 80+ databases tracking workload, profitability, turnaround time, and audit compliance.',
-    tags: ['Power BI', 'SQL', 'DAX'],
-    icon: '💳',
+    desc: 'Automated ingestion pipelines pulling CMDB asset state, job health telemetry, and CPU/memory utilization metrics from Azure Data Lake and Oracle DB into Power BI dashboards.',
+    tags: ['Azure Data Lake', 'Oracle DB', 'SQL', 'Power BI', 'Power Automate'],
+    icon: '🏗️',
   },
   {
     num: '05',
     color: 'cyan',
     featured: false,
-    name: 'Unauthorized Software Remediation',
-    role: 'Automation Engineer',
+    name: 'Multi-Tenant Security Governance & RLS Architecture',
+    role: 'BI & Security Specialist',
     impact: [
-      { val: '20K+', label: 'Endpoints' },
-      { val: '~45',  label: 'FTEs Saved'},
+      { val: '100+', label: 'Segregated Accounts' },
+      { val: 'RLS', label: 'Row-Level Security' },
     ],
-    desc: 'PowerShell framework monitoring enterprise endpoints via centralized jump host. Auto-collected software inventory and remotely uninstalled unauthorized applications.',
-    tags: ['PowerShell', 'Microsoft Intune', 'Windows Endpoint'],
-    icon: '⚙️',
+    desc: 'Enterprise security framework implementing Row-Level Security (RLS) in Power BI, ensuring strict client data segregation so each account strictly views its own operational data across 100+ concurrent customer deployments.',
+    tags: ['Power BI', 'Row-Level Security (RLS)', 'DAX', 'Data Governance'],
+    icon: '🛡️',
   },
 ];
 
@@ -88,20 +90,30 @@ export default function Projects() {
   }, []);
 
   const featured = PROJECTS.find((p) => p.featured);
-  const rest     = PROJECTS.filter((p) => !p.featured);
+  const rest = PROJECTS.filter((p) => !p.featured);
 
   return (
     <section id="projects" className={styles.section} ref={ref}>
       <div className="reveal">
-        <div className="section-label">03 / Projects</div>
+        <div className="section-label">03 / Agentic AI &amp; Projects</div>
         <h2 className="section-title">
-          Key <em>Projects</em> &amp; Impact
+          Featured <em>Agentic AI &amp; Enterprise Projects</em>
         </h2>
       </div>
 
+      {/* 3D Interactive Agent Architecture Visualizer */}
+      <div className="reveal">
+        <AgentWorkflow3D />
+      </div>
+
       <div className={styles.bento}>
-        {/* ── FEATURED CARD (wide) ── */}
-        <div className={`${styles.featCard} ${styles[`feat_${featured.color}`]} reveal`}>
+        {/* ── FEATURED CARD (3D Tilt) ── */}
+        <TiltCard
+          className={`${styles.featCard} ${styles[`feat_${featured.color}`]} reveal`}
+          max={10}
+          scale={1.02}
+          glowColor="rgba(34, 211, 238, 0.3)"
+        >
           {/* Background glow */}
           <div className={`${styles.featGlow} ${styles[`glow_${featured.color}`]}`} />
 
@@ -110,7 +122,7 @@ export default function Projects() {
             <div className={`${styles.featIcon} ${styles[`iconBg_${featured.color}`]}`}>
               {featured.icon}
             </div>
-            <div className={styles.featBadge}>Featured Project</div>
+            <div className={styles.featBadge}>Flagship AI Project</div>
             <span className={`${styles.featNum} ${styles[`col_${featured.color}`]}`}>
               {featured.num}
             </span>
@@ -145,13 +157,16 @@ export default function Projects() {
               </span>
             ))}
           </div>
-        </div>
+        </TiltCard>
 
-        {/* ── REGULAR CARDS ── */}
+        {/* ── REGULAR CARDS (3D Tilt) ── */}
         {rest.map((p) => (
-          <div
-            className={`${styles.card} ${styles[`card_${p.color}`]} reveal`}
+          <TiltCard
             key={p.num}
+            className={`${styles.card} ${styles[`card_${p.color}`]} reveal`}
+            max={12}
+            scale={1.03}
+            glowColor="rgba(167, 139, 250, 0.25)"
           >
             <div className={`${styles.cardGlow} ${styles[`glow_${p.color}`]}`} />
 
@@ -181,10 +196,12 @@ export default function Projects() {
 
             <div className={styles.tags}>
               {p.tags.map((t) => (
-                <span className={`${styles.tag} ${styles[`tag_${p.color}`]}`} key={t}>{t}</span>
+                <span className={`${styles.tag} ${styles[`tag_${p.color}`]}`} key={t}>
+                  {t}
+                </span>
               ))}
             </div>
-          </div>
+          </TiltCard>
         ))}
       </div>
     </section>

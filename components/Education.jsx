@@ -1,42 +1,37 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import TiltCard from './TiltCard';
 import styles from './Education.module.css';
 
 const EDU = [
   {
-    degree: 'B.Tech — Bachelor of Technology',
-    school: 'AIEM, Hooghly',
+    degree: 'B.Tech — Computer Engineering',
+    school: 'A.I.E.M, Hooghly',
     period: '2016 – 2020',
-    score:  'DGPA 7.53 / 10',
-    color:  'cyan',
+    score: 'DGPA 7.53',
+    color: 'cyan',
   },
   {
-    degree: 'Higher Secondary (Class XII)',
+    degree: 'Higher Secondary (Science)',
     school: 'Burdwan C.M.S High School',
     period: '2014 – 2016',
-    score:  '85%',
-    color:  'green',
+    score: '85.0%',
+    color: 'green',
   },
 ];
 
 const CERTS = [
   {
-    icon: '🏛️',
-    name: 'Oracle Cloud Data Management 2022 Foundation',
-    issuer: 'Oracle Corporation',
-    color: 'amber',
-  },
-  {
-    icon: '🏛️',
-    name: 'Oracle Cloud Data Management 2023 Foundation',
-    issuer: 'Oracle Corporation',
-    color: 'amber',
-  },
-  {
     icon: '🎓',
-    name: 'Red Hat Certified System Administrator (RHCSA)',
+    name: 'RHCSA — Red Hat Certified System Administrator',
     issuer: 'Red Hat',
     color: 'purple',
+  },
+  {
+    icon: '☁️',
+    name: 'Oracle Cloud Data Management Foundation (2022, 2023)',
+    issuer: 'Oracle Corporation',
+    color: 'amber',
   },
 ];
 
@@ -56,44 +51,52 @@ export default function Education() {
       {/* Education */}
       <div className="reveal">
         <div className="section-label">05 / Education</div>
-        <h2 className="section-title">Academic <em>Background</em></h2>
+        <h2 className="section-title">
+          Academic <em>Background</em>
+        </h2>
       </div>
 
       <div className={styles.eduGrid}>
         {EDU.map((e) => (
-          <div className={`${styles.eduCard} reveal`} key={e.degree}>
-            <div className={`${styles.eduBar} ${styles[`bar_${e.color}`]}`} />
-            <div className={styles.eduBody}>
-              <div className={styles.eduDegree}>{e.degree}</div>
-              <div className={`${styles.eduSchool} ${styles[`col_${e.color}`]}`}>{e.school}</div>
-              <div className={styles.eduMeta}>
-                <span>📅 {e.period}</span>
-                <span>⭐ {e.score}</span>
+          <TiltCard key={e.degree} max={12} scale={1.03} glowColor="rgba(34, 211, 238, 0.25)">
+            <div className={`${styles.eduCard} reveal`}>
+              <div className={`${styles.eduBar} ${styles[`bar_${e.color}`]}`} />
+              <div className={styles.eduBody}>
+                <div className={styles.eduDegree}>{e.degree}</div>
+                <div className={`${styles.eduSchool} ${styles[`col_${e.color}`]}`}>{e.school}</div>
+                <div className={styles.eduMeta}>
+                  <span>📅 {e.period}</span>
+                  <span>⭐ {e.score}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </TiltCard>
         ))}
       </div>
 
       {/* Certifications */}
       <div className={`${styles.certSection} reveal`}>
         <div className="section-label">06 / Certifications</div>
-        <h2 className="section-title" style={{ marginBottom: '2rem' }}>Professional <em>Certifications</em></h2>
+        <h2 className="section-title" style={{ marginBottom: '2rem' }}>
+          Professional <em>Certifications</em>
+        </h2>
       </div>
 
       <div className={styles.certGrid}>
         {CERTS.map((c) => (
-          <div className={`${styles.certCard} reveal`} key={c.name}>
-            <div className={`${styles.certIcon} ${styles[`certIcon_${c.color}`]}`}>
-              {c.icon}
-            </div>
-            <div className={styles.certBody}>
-              <div className={styles.certName}>{c.name}</div>
-              <div className={`${styles.certIssuer} ${styles[`col_${c.color}`]}`}>
-                {c.issuer}
+          <TiltCard key={c.name} max={12} scale={1.03} glowColor="rgba(167, 139, 250, 0.25)">
+            <div className={`${styles.certCard} reveal`}>
+              <div className={`${styles.certIcon} ${styles[`certIcon_${c.color}`]}`}>
+                {c.icon}
+              </div>
+              <div className={styles.certBody}>
+                <div className={styles.certName}>{c.name}</div>
+                <div className={`${styles.certIssuer} ${styles[`col_${c.color}`]}`}>
+                  {c.issuer}
+                </div>
               </div>
             </div>
-          </div>
+          </TiltCard>
         ))}
       </div>
     </section>
