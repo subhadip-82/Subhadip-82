@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.name}>Subhadip Chowdhury</div>
       <div className={styles.copy}>
-        © 2025 &nbsp;·&nbsp; Senior Analyst — BI &amp; Automation &nbsp;·&nbsp; Kolkata, India
+        © 2026 &nbsp;·&nbsp; AI Solutions Engineer — Agentic AI, BI &amp; Enterprise Automation &nbsp;·&nbsp; Kolkata, India
       </div>
     </footer>
   );

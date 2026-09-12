@@ -1,17 +1,34 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import TiltCard from './TiltCard';
 import styles from './About.module.css';
 
-const STACK = ['Power BI', 'DAX', 'SQL', 'Python', 'PowerShell', 'AWS S3', 'Azure Blob', 'Oracle', 'Docker', 'ETL', 'Power Automate', 'ServiceNow'];
+const STACK = [
+  'LangGraph',
+  'MCP Tools',
+  'Claude Code',
+  'Python (Asyncio)',
+  'PostgreSQL',
+  'Power BI',
+  'DAX',
+  'SQL',
+  'PowerShell',
+  'Power Automate',
+  'Azure Data Lake',
+  'AWS S3',
+  'ServiceNow CMDB',
+  'RHCSA Linux',
+];
 
 const META = [
-  { key: 'Location',     val: 'Kolkata, West Bengal, India'          },
-  { key: 'Current',      val: 'Senior Analyst @ DXC Technology'      },
-  { key: 'Email',        val: 'subhadipchowdhury1998@gmail.com'       },
-  { key: 'LinkedIn',     val: 'linkedin.com/in/subho98'              },
-  { key: 'Experience',   val: '5+ Years in BI & Automation'          },
-  { key: 'Speciality',   val: 'Data Intelligence & ETL'              },
+  { key: 'Location', val: 'Kol-157, West Bengal, India' },
+  { key: 'Current Role', val: 'AI Solutions Engineer @ DXC Technology' },
+  { key: 'Phone', val: '+91 7908309248' },
+  { key: 'Email', val: 'subhadipchowdhury1998@gmail.com' },
+  { key: 'LinkedIn', val: 'linkedin.com/in/subho98' },
+  { key: 'Experience', val: '5+ Years Enterprise Technology' },
+  { key: 'Specialities', val: 'Agentic AI, LangGraph, MCP, Power BI & Automation' },
 ];
 
 export default function About() {
@@ -29,39 +46,45 @@ export default function About() {
     <section id="about" className={styles.section} ref={ref}>
       <div className="reveal">
         <div className="section-label">01 / About</div>
-        <h2 className="section-title">The Person<br />Behind the <em>Data</em></h2>
+        <h2 className="section-title">
+          Architecting <em>Agentic AI</em> &amp; Enterprise Systems
+        </h2>
       </div>
 
       <div className={styles.grid}>
-        {/* LEFT: photo card */}
+        {/* LEFT: photo card with 3D Tilt */}
         <div className={`${styles.photoCol} reveal`}>
-          <div className={styles.photoCard}>
-            <div className={styles.photoWrap}>
-              <Image
-                src="/profile.jpg"
-                alt="Subhadip Chowdhury"
-                fill
-                sizes="(max-width: 600px) 160px, 220px"
-                style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                priority
-              />
-              <div className={styles.photoGradient} />
-            </div>
-            <div className={styles.photoFooter}>
-              <div className={styles.photoName}>Subhadip Chowdhury</div>
-              <div className={styles.photoBadge}>
-                <span className={styles.onlineDot} />
-                Senior Analyst · DXC Technology
+          <TiltCard max={14} scale={1.03} glowColor="rgba(34, 211, 238, 0.3)">
+            <div className={styles.photoCard}>
+              <div className={styles.photoWrap}>
+                <Image
+                  src="/profile.jpg"
+                  alt="Subhadip Chowdhury"
+                  fill
+                  sizes="(max-width: 600px) 160px, 220px"
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                  priority
+                />
+                <div className={styles.photoGradient} />
+              </div>
+              <div className={styles.photoFooter}>
+                <div className={styles.photoName}>Subhadip Chowdhury</div>
+                <div className={styles.photoBadge}>
+                  <span className={styles.onlineDot} />
+                  AI Solutions Engineer · DXC Technology
+                </div>
               </div>
             </div>
-          </div>
+          </TiltCard>
 
           {/* Tech stack mini tags */}
           <div className={styles.stackWrap}>
-            <div className={styles.stackLabel}>// tech_stack</div>
+            <div className={styles.stackLabel}>// core_technologies</div>
             <div className={styles.stackTags}>
               {STACK.map((s) => (
-                <span className="tag" key={s}>{s}</span>
+                <span className="tag" key={s}>
+                  {s}
+                </span>
               ))}
             </div>
           </div>
@@ -71,35 +94,28 @@ export default function About() {
         <div className={styles.right}>
           <div className={`${styles.bioBlock} reveal`}>
             <p>
-              I&apos;m a <strong>Senior Data Analyst</strong> at DXC Technology with{' '}
-              <strong>5+ years</strong> building scalable BI and automation solutions across{' '}
-              <strong>banking</strong> and enterprise infrastructure — bridging complex data
-              pipelines with clear, actionable intelligence.
+              I&apos;m an <strong>AI Solutions Engineer</strong> at DXC Technology with over{' '}
+              <strong>5+ years of enterprise technology experience</strong> across banking and infrastructure environments. My expertise spans <strong>business intelligence</strong>, <strong>large-scale endpoint automation</strong>, and production <strong>agentic AI systems</strong>.
             </p>
             <p>
-              I specialise in <strong>Power BI</strong>, <strong>DAX</strong>, advanced SQL
-              optimisation, and hybrid cloud integrations across{' '}
-              <strong>AWS S3</strong>, <strong>Azure Blob</strong>, and{' '}
-              <strong>Oracle</strong>. I&apos;ve led deployments that replaced fragmented manual
-              workflows with unified operational intelligence platforms.
+              Currently, I design and build production <strong>LangGraph agents</strong> featuring <strong>Model Context Protocol (MCP)</strong> tool integrations for automated infrastructure remediation. I design PostgreSQL schemas for tracking execution history, node-by-node states, and checkpoints so agent runs can be replayed or audited after the fact.
             </p>
             <p>
-              Beyond dashboards — I architect end-to-end{' '}
-              <strong>automation frameworks</strong> using PowerShell and Power Automate that
-              eliminated <strong>135+ FTEs</strong> of manual effort across security and audit
-              processes.
+              My background is anchored by years of high-impact <strong>Power BI reporting</strong>, <strong>DAX measures</strong>, <strong>SQL/ETL pipelines</strong>, and <strong>PowerShell scripts</strong> across <strong>20,000+ endpoints</strong> — eliminating 135+ FTE-hours of manual audit work and cutting reporting effort by 40%.
             </p>
           </div>
 
-          {/* Meta table */}
-          <div className={`${styles.metaTable} reveal`}>
-            {META.map((m) => (
-              <div className={styles.metaRow} key={m.key}>
-                <span className={styles.metaKey}>{m.key}</span>
-                <span className={styles.metaVal}>{m.val}</span>
-              </div>
-            ))}
-          </div>
+          {/* Meta table wrapped in 3D tilt */}
+          <TiltCard max={8} scale={1.01} glowColor="rgba(167, 139, 250, 0.2)">
+            <div className={`${styles.metaTable} reveal`}>
+              {META.map((m) => (
+                <div className={styles.metaRow} key={m.key}>
+                  <span className={styles.metaKey}>{m.key}</span>
+                  <span className={styles.metaVal}>{m.val}</span>
+                </div>
+              ))}
+            </div>
+          </TiltCard>
         </div>
       </div>
     </section>
